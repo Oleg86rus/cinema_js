@@ -1,4 +1,4 @@
-import { getTriends } from './servises.js';
+import { getTriends } from './services.js';
 import renderCard from './renderCard.js';
 
 const filmWeek = document.querySelector('.film-week');
