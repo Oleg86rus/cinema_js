@@ -4,13 +4,16 @@ const renderCard = async (data) => {
 
     listCard.textContent = '';
 
-    const cards = data.map((item) => {
+    Promise.all(data.map(async (item) => {
+
+        
         console.log('item: ', item);
         console.log(item.title || item.name)
         const card = document.createElement('li');
         card.className = 'other-films__item';
 
         const link = document.createElement('a');
+        //if (key) link.href = `https://youtu.be/${key}`
         link.className = 'other-films__link';
         link.dataset.rating = item.vote_average;
         
@@ -23,11 +26,13 @@ const renderCard = async (data) => {
         link.append(img);
         card.append(link);
        return card;
-    })
+    })).then(cards => console.log(cards))
+
+    
 
     
     
-    console.log(cards);
-    listCard.append(...cards);
+    //console.log(cards);
+    //listCard.append(...cards);
 };
 export default renderCard;
