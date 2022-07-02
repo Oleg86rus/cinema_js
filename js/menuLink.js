@@ -1,6 +1,7 @@
 import {
     getPopular,
-    getTop
+    getTop,
+    getTriends
 } from './services.js';
 import renderCard from './renderCard.js';
 
@@ -10,17 +11,17 @@ const getNav = document.querySelectorAll('.get-nav');
 const menuLink = () => {
     getNav.forEach(nav => {
         nav.addEventListener('click', event => {
-            
+
             const target = event.target.closest('.get-nav__link');
             if (target) {
                 event.preventDefault();
                 filmWeek.style.display = 'none';
                 title.textContent = target.textContent
                 if (target.classList.contains('get-nav__link_triends')) {
-                    getPopular('movie' || 'tv')
+                    getTriends('movie' || 'tv')
                         .then(data => renderCard(data.results))
                 }
-                
+
                 if (target.classList.contains('get-nav__link_popular-movies')) {
                     getPopular('movie')
                         .then(data => renderCard(data.results))
@@ -43,4 +44,4 @@ const menuLink = () => {
         })
     })
 }
-export default menuLink;
+export default menuLink; 
